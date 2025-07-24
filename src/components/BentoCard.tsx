@@ -17,17 +17,21 @@ const sizeClasses = {
 export default function BentoCard({ 
   children, 
   className, 
-  size = 'md' 
-}: BentoCardProps) {
+  size = 'md',
+  ...props 
+}: BentoCardProps & React.HTMLAttributes<HTMLDivElement>) {
   return (
     <div
       className={cn(
-        'group relative overflow-hidden rounded-xl border bg-card p-6',
-        'transition-all duration-300 hover:shadow-lg hover:-translate-y-1',
-        'border-border/50 hover:border-border',
+        'group relative overflow-hidden rounded-2xl border backdrop-blur-sm',
+        'transition-all duration-500 hover:shadow-2xl hover:-translate-y-2',
+        'border-border/50 hover:border-primary/30',
+        'bg-card/50 hover:bg-card/70',
+        'p-6',
         sizeClasses[size],
         className
       )}
+      {...props}
     >
       {children}
     </div>
